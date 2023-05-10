@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PROFIT GAME HTML5</title>
+        <link rel="stylesheet" type="text/css" href="profit2.css">
+        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    </head>
+    <body>
+        <canvas id="field" width="600" height="600"></canvas>
+        <div id="healthbar"><div id="health"></div></div>
+        <div id="lives"><img id="life0" src="images/starship.png"><img id="life1" src="images/starship.png"><img id="life2" src="images/starship.png"></div>
+		<!-- <div id="level">Fase</div> -->
+		<!-- <div id="timelimit"><progress max="100" value="50"></progress></div> -->
+        <div id="combo">0</div>
+        <div id="score">0</div>
+		<!-- <div id="score">0</div> -->
+		<section class="overlay" id="start">PROFIT <div class="underneath">GAME HTML5</div>
+		<div class="underneath" id="begin"><a href="javascript: void(0)">Iniciar</a></div>
+		<div class="underneath" id="credits_link"><a href="javascript: void(0)">Creditos</a></div>
+		<div class="underneath" id="inst_link"><a href="javascript: void(0)">Instrucoes</a></div> <!-- chamada da tela de instruções FG -->
+		<div class="underneath"><a href="https://github.com/Gaurav0/ACM-Space-Shooter" target="_blank">Codigo Fonte Original</a></div> <!-- inserido target="blank" FG -->
+		</section>
+        <section class="overlay" id="end">Fim de Jogo<div class="underneath" id="restart"><a href="javascript: void(0)">Reiniciar</a></div></section>
+        <section class="overlay" id="pause">Pausado<div class="underneath" id="resume">ESC para retornar</div></section>
+        <section class="overlay" id="credits">
+			<h1>Contribuintes QI</h1>
+            <ul>
+                <li>João Batista</li>
+                <li>Luciano Selistre</li>
+                <li>Felipe Goldani</li>
+            </ul>
+            <h1>Contribuintes Estrangeiros</h1>
+            <ul>
+                <li>Gaurav Munjal</li>
+                <li>Jeremy Neiman</li>
+                <li>Alamgir Hossain</li>
+                <li>Linda Wong</li>
+                <li>Karim Razek</li>
+                <li>Mauro Oviedo</li>
+                <li>Yuriy Stejko</li>
+                <li>Carlos Moreaux</li>
+            </ul>
+
+                
+            </ul>
+            <!--<h1>Creditos Artísticos</h1>
+            <ul>
+                <li><a href="http://opengameart.org/content/space-starter-kit">Space Starter Kit</a> by Thomas Glansch (Cruzr)</li>
+                <li><a href="http://webtreats.mysitemyway.com/tileable-classic-nebula-space-patterns">Background</a> by WebTreatsETC</li>
+                <li><a href="http://opengameart.org/content/asteroid-rotating">Asteroid</a> by Damon Czanik</li>
+                <li><a href="http://opengameart.org/content/more-rpg-enemies">Enemies</a> by Stephen Challener (RedShrike)</li>
+                <li><a href="http://opengameart.org/content/gaia-free-boss-monster">Gaia Boss Monster</a> by Antifarea</li>
+                <li><a href="http://opengameart.org/content/colorized-boss-sprites">Second Boss</a> by Scrittl and Atrus</li>
+                <li><a href="http://opengameart.org/content/explosion">Explosion Spritesheet</a> by Cuzco</li>
+                <li><a href="http://opengameart.org/content/fireball-spell">Fireball</a> by Clint Bellanger</li>
+                <li><a href="http://opengameart.org/content/through-space">Background Music</a> by maxstack</li>
+                <li><a href="http://opengameart.org/content/hold-line-boss-theme">Boss Music</a> by Bart Kelsey</li>
+                <li><a href="http://opengameart.org/content/4-projectile-launches">Torpedo Launch</a> by Michel Baradari</li>
+                <li><a href="http://opengameart.org/content/spell-4-fire">Fireball Launch</a> by Bart Kelsey</li>
+                <li><a href="http://opengameart.org/content/2-explosions">Explosion Sound</a> by Michel Baradari</li>
+                <li><a href="http://opengameart.org/content/win-sound-2">Drop Received Sound</a> by remaxim</li>
+                <li><a href="http://www.fontspace.com/bridgeco/shear-15">Shear 15 Font</a> by BridgeCo</li>
+            </ul>-->
+        </section>
+		
+		
+		<!-- tela de instruções FG -->
+		<section class="overlay" id="inst">
+			<h1>Instruções</h1>
+				<p>Este é um jogo no qual o objetivo é ensinar de maneira educativa o jogador a gerenciar o seu dinheiro. Percorrendo o caminho dos tijolos amarelos, o jogador deve investir nos objetos que aparecem no caminho para agregar valor ($). Cada disparo vai influenciar nos resultado dos futuros investimentos. O objetivo do jogo é somar a maior quantidade de $ dentro do período de tempo do jogo.</p>
+			<h1>Comandos</h1>	
+				<p>Utilize as setas do teclado para mover a nave. A tecla de espaço efetuará os investimentos nos objetos que aparecem pelo caminho.</p>
+		</section>
+		
+        <audio id="boom" preload="auto">
+            <source src="audio/explosion.mp3" type="audio/mp3">
+            <source src="audio/explosion.ogg" type="audio/ogg">
+        </audio>
+        <audio id="launch" preload="auto">
+            <source src="audio/launch.mp3" type="audio/mp3">
+            <source src="audio/launch.ogg" type="audio/ogg">
+        </audio>
+        <audio id="powerup" preload="auto">
+            <source src="audio/powerup.mp3" type="audio/mp3">
+            <source src="audio/powerup.ogg" type="audio/ogg">
+        </audio>
+        <audio id="foom" preload="auto">
+            <source src="audio/foom.mp3" type="audio/mp3">
+            <source src="audio/foom.ogg" type="audio/ogg">
+        </audio>
+        <audio id="loop" preload="auto" loop="loop">
+            <source src="audio/through_space.mp3" type="audio/mp3">
+            <source src="audio/through_space.ogg" type="audio/ogg">
+        </audio>
+        <audio id="boss" preload="auto" loop="loop">
+            <source src="audio/boss.mp3" type="audio/mp3">
+            <source src="audio/boss.ogg" type="audio/ogg">
+        </audio>
+        <!-- <div id="mouse_ctrl"><label><input type="checkbox" id="mouse_en">Enable Mouse Control</label></div> -->
+        <!-- <iframe class="FlattrButton" src="http://tools.flattr.net/widgets/thing.html?thing=1211153" width="228" height="130"></iframe> -->
+		<div id="mouse_ctrl"><label><input type="checkbox" id="mouse_en">Enable Mouse Control</label></div>
+		<!-- <iframe class="FlattrButton" src="http://tools.flattr.net/widgets/thing.html?thing=1211153" width="228" height="130"></iframe> retirada das doações FG -->
+        <script type="text/javascript" src="profit2.js"></script>
+		<!--<script type="text/javascript">window.onload=function(){ startCountdown(); }</script>-->
+}</script>
+    </body>
+</html>
